@@ -1,10 +1,11 @@
 'use strict';
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
+
 const app = express();
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controllers/errorController');
-
 // const client_posts = JSON.parse(fs.readFileSync('./json-resources/client_posts.json'));
 
 //MIDDLEWARE
@@ -15,6 +16,7 @@ if (process.env.NODE_ENV === 'development') {
 console.log(process.env.NODE_ENV);
 app.use(express.json());
 app.use(express.static('./public'));
+app.use(cors());
 
 app.use((req, res, next) => {
   // req.requestTime = new Date().toISOString();
@@ -27,7 +29,7 @@ app.use((req, res, next) => {
 
 app.use((req, res, next) =>{
   
-  res.setHeader("Access-Control-Allow-Origin", "*");
+res.setHeader("Access-Control-Allow-Origin", "*");
 res.setHeader("Access-Control-Allow-Credentials", "true");
 res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
 res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
