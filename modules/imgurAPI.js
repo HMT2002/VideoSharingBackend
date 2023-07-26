@@ -8,7 +8,7 @@ clientImgur.on('uploadProgress', (progress) => console.log(progress));
 
 module.exports = async ({ image, type }) => {
   const response = await clientImgur.upload({ image: image, type: type });
-  console.log(response.link);
+  //console.log(response.link);
 
   return response.data;
 };
