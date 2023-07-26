@@ -1,1 +1,3 @@
 node_modules
+videos/convert/*.m3u8
+videos/convert/*.ts
